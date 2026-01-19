@@ -1,13 +1,13 @@
-import NextLink from 'next/link';
-import { Box, Flex, Link, VStack } from '@chakra-ui/react';
-import { AnimatePresence, useCycle, motion } from 'framer-motion';
+import NextLink from "next/link";
+import { Box, Flex, Link, VStack } from "@chakra-ui/react";
+import { AnimatePresence, useCycle, motion } from "framer-motion";
 
-import { Logo, Backdrop, Icons } from '../shared';
-import ToggleMenu from './Toggle.js';
-import NavHeader from './NavHeader.js';
-import NavLinks from './NavLinks.js';
-import { controlBodyFlow } from '../utils';
-import { useEffect, useState } from 'react';
+import { Logo, Backdrop, Icons } from "../shared";
+import ToggleMenu from "./Toggle.js";
+import NavHeader from "./NavHeader.js";
+import NavLinks from "./NavLinks.js";
+import { controlBodyFlow } from "../utils";
+import { useEffect, useState } from "react";
 
 const MotionFlex = motion(Flex);
 
@@ -43,10 +43,10 @@ const Navbar = () => {
       setDirection(actual - prev);
       setPosition(actual);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [position]);
 
@@ -61,56 +61,54 @@ const Navbar = () => {
 
   return (
     <MotionFlex
-      bg='black.900'
-      dropShadow='2xl'
-      position='fixed'
+      bg="black.900"
+      dropShadow="2xl"
+      position="fixed"
       top={0}
       left={0}
       right={0}
-      zIndex='3'
+      zIndex="3"
       variants={navbarVariants}
-      animate={hide ? 'hide' : 'visible'}
+      animate={hide ? "hide" : "visible"}
     >
       <Flex
-        w='full'
-        mx='auto'
-        maxW='container.xl'
+        w="full"
+        mx="auto"
+        maxW="container.xl"
         pt={8}
         pb={4}
         px={{ base: 8, md: 20 }}
-        justifyContent='space-between'
+        justifyContent="space-between"
       >
-        <NextLink href='/#home'>
-          <a>
-            <Logo />
-          </a>
+        <NextLink href="/#home">
+          <Logo />
         </NextLink>
         <ToggleMenu
           open={open}
           onClick={() => toggleOpen()}
           onKeyDown={(e) => handleToggleKey(e)}
-          color={'#fff'}
+          color={"#fff"}
         />
 
-        <AnimatePresence initial={false} exitBeforeEnter={true}>
+        <AnimatePresence initial={false} mode="wait">
           {open && (
-            <Backdrop key='backdrop' open={open} toggleOpen={toggleOpen}>
+            <Backdrop key="backdrop" open={open} toggleOpen={toggleOpen}>
               <Box
-                as='nav'
-                key='nav'
-                position='absolute'
+                as="nav"
+                key="nav"
+                position="absolute"
                 top={0}
-                left={{ base: 0, md: 'auto' }}
-                right={{ base: 'auto', md: 0 }}
-                w={{ base: 'full', md: 'auto' }}
-                h='full'
-                display='flex'
-                flexDirection='column'
-                justifyContent='space-between'
+                left={{ base: 0, md: "auto" }}
+                right={{ base: "auto", md: 0 }}
+                w={{ base: "full", md: "auto" }}
+                h="full"
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
                 py={8}
                 px={{ base: 8, md: 32 }}
-                color='white'
-                bg='black'
+                color="white"
+                bg="black"
                 onClick={(e) => e.stopPropagation()}
                 onKeyDown={(e) => handleToggleKey(e)}
               >
@@ -127,21 +125,21 @@ const Navbar = () => {
                   />
                 </Box>
                 <VStack
-                  align='flex-start'
+                  align="flex-start"
                   spacing={4}
                   pb={8}
                   mr={{ base: 0, md: 32 }}
                 >
                   <Icons
-                    justify='flex-start'
+                    justify="flex-start"
                     spacing={4}
-                    iconSize={{ base: '2xl', md: '3xl' }}
+                    iconSize={{ base: "2xl", md: "3xl" }}
                   />
                   <Link
-                    fontWeight='light'
-                    fontSize={{ base: 'md', md: 'lg' }}
-                    textAlign='center'
-                    href='mailto:d4niel.djm@gmail.com'
+                    fontWeight="light"
+                    fontSize={{ base: "md", md: "lg" }}
+                    textAlign="center"
+                    href="mailto:d4niel.djm@gmail.com"
                   >
                     d4niel.djm@gmail.com
                   </Link>
