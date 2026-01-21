@@ -1,13 +1,11 @@
-import NextLink from 'next/link';
-import { Button } from '@chakra-ui/react';
+import NextLink from "next/link";
+import { Button } from "@chakra-ui/react";
 
 const Link = ({ href, children, ...props }) => {
   return (
-    <NextLink href={href} passHref>
-      <Button as='a' _hover={{ bg: 'auto' }} {...props}>
-        {children}
-      </Button>
-    </NextLink>
+    <Button as={NextLink} href={href} _hover={{ bg: "auto" }} {...props}>
+      {children}
+    </Button>
   );
 };
 
